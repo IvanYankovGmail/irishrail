@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">IrishRail</string>
+    <string name="stations">Stations</string>
+    <string name="all">All</string>
+    <string name="running_trains">Running trains</string>
+    <string name="mainline">Mainline</string>
+    <string name="suburban">Suburban</string>
+    <string name="dart">DART</string>
+    <string name="train">Train</string>
+    <string name="train_station">Train station</string>
+    <string name="status_no_information">Status: No information</string>
+    <string name="not_yet_running">Not yet running</string>
+    <string name="running">Running</string>
+    <string name="scheduled_arrival">Scheduled Arrival : %s</string>
+    <string name="scheduled_departure">Scheduled Departure : %s</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="ok">OK</string>
+</resources>

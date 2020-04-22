@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.ivanyankov.irishrail.ui.dashboard.DashboardContract.Presenter" />
+
+        <import type="com.ivanyankov.irishrail.data.enums.TrainType" />
+    </data>
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.dashboard.DashboardActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_stations"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:contentDescription="@string/train_station"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/guideline_middle_station"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_train_station" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_middle_station"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <TextView
+                        android:id="@+id/tv_stations"
+                        style="@style/TitleText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/stations"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="@+id/guideline_middle_station"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_all_stations"
+                        style="@style/ClickableText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:onClick="@{() -> presenter.onStationsAllClicked()}"
+                        android:text="@string/all"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="@+id/guideline_middle_station"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_stations" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_trains"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:contentDescription="@string/train"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="@+id/guideline_middle_trains"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_train" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_middle_trains"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <TextView
+                        android:id="@+id/tv_running_trains"
+                        style="@style/TitleText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_marginBottom="64dp"
+                        android:text="@string/running_trains"
+                        app:layout_constraintLeft_toRightOf="@+id/guideline_middle_trains"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_all_trains"
+                        style="@style/ClickableText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:onClick="@{() -> presenter.onGoToTrainTypeClicked(TrainType.TRAIN_ALL)}"
+                        android:text="@string/all"
+                        app:layout_constraintLeft_toRightOf="@+id/guideline_middle_trains"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_running_trains" />
+
+                    <TextView
+                        android:id="@+id/tv_mainline"
+                        style="@style/ClickableText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:onClick="@{() -> presenter.onGoToTrainTypeClicked(TrainType.TRAIN_MAINLINE)}"
+                        android:text="@string/mainline"
+                        app:layout_constraintLeft_toRightOf="@+id/guideline_middle_trains"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_all_trains" />
+
+                    <TextView
+                        android:id="@+id/tv_suburban"
+                        style="@style/ClickableText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:onClick="@{() -> presenter.onGoToTrainTypeClicked(TrainType.TRAIN_SUBURBAN)}"
+                        android:text="@string/suburban"
+                        app:layout_constraintLeft_toRightOf="@+id/guideline_middle_trains"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mainline" />
+
+                    <TextView
+                        android:id="@+id/tv_dart"
+                        style="@style/ClickableText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:onClick="@{() -> presenter.onGoToTrainTypeClicked(TrainType.TRAIN_DART)}"
+                        android:text="@string/dart"
+                        app:layout_constraintLeft_toRightOf="@+id/guideline_middle_trains"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_suburban" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
